@@ -13,17 +13,25 @@ class Counter extends Component{
             {current : this.state.current + 1}
         );
     }
-    decrement() {
+    decrement = () => {
         this.setState(
             {current : this.state.current - 1}
         ); //Without the fat arrow you need to bind, see below
     } 
+
+    // decrement() {
+    //     this.setState(
+    //         {current : this.state.current - 1}
+    //     ); //Without the fat arrow you need to bind, see below
+    // } 
+
     render(){
         return(
             <div>
-                <Decrementor decrease={this.decrement.bind(this)}/>
-                <CounterDisplay current={this.state.current}/>
+                {/* <Decrementor decrease={this.decrement.bind(this)}/> */}
                 <Incrementor increase={this.increment}/>
+                <CounterDisplay current={this.state.current}/>
+                <Decrementor decrease={this.decrement}/>
             </div>
         );
     }
