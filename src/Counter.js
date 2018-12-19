@@ -1,37 +1,17 @@
+//
 import React, {Component} from 'react';
 import Decrementor from './Decrementor';
 import Incrementor from './Incrementor';
 import CounterDisplay from './CounterDisplay';
 
-class Counter extends Component{
-    constructor() {
-        super();
-        this.state = { current: 42 };
-    }
-    increment = () => {
-        this.setState(
-            {current : this.state.current + 1}
-        );
-    }
-    decrement = () => {
-        this.setState(
-            {current : this.state.current - 1}
-        ); //Without the fat arrow you need to bind, see below
-    } 
-
-    // decrement() {
-    //     this.setState(
-    //         {current : this.state.current - 1}
-    //     ); //Without the fat arrow you need to bind, see below
-    // } 
-
+class Counter extends Component {
     render(){
+        const {decrement, current, increment} = this.props;
         return(
             <div>
-                {/* <Decrementor decrease={this.decrement.bind(this)}/> */}
-                <Incrementor increase={this.increment}/>
-                <CounterDisplay current={this.state.current}/>
-                <Decrementor decrease={this.decrement}/>
+                <Incrementor increase={increment}/>
+                <CounterDisplay current={current}/>
+                <Decrementor decrease={decrement}/>
             </div>
         );
     }
